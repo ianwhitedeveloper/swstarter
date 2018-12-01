@@ -1,6 +1,6 @@
 .details-wrapper {
   width: 804px;
-  height: 417px;
+  min-height: 417px;
   border-radius: 4px;
   box-shadow: 0 1px 2px 0 rgba(132, 132, 132, 0.75);
   background-color: #ffffff;
@@ -29,6 +29,15 @@ h3 #title {
 
 .info ul {
   list-style: none;
+}
+
+.opening-crawl {
+  width: 350px;
+  height: auto;
+}
+
+.characters li {
+  font-size: 14px;
 }
 
 #back-btn {

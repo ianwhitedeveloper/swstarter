@@ -28,7 +28,7 @@ class Search extends React.Component {
                   type="radio"
                   id="movies"
                   name="searchQuery"
-                  value="films"
+                  value="movies"
                   onChange={context.handleSelect}
                 />
                 <label htmlFor="movies">Movies</label>
