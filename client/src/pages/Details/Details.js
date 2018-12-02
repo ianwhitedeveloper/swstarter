@@ -5,6 +5,8 @@ import { AppContext } from "../../utils/AppContext";
 
 class Details extends React.Component {
   static contextType = AppContext;
+
+  // render correct details for either people or movies
   renderInfo = () => {
     const context = this.context;
     const result = context.results[context.resultIndex];

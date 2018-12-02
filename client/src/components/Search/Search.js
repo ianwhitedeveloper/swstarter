@@ -2,6 +2,7 @@ import React from "react";
 import "./Search.css";
 import { AppContext } from "../../utils/AppContext";
 
+// Search form
 class Search extends React.Component {
   static contextType = AppContext;
 

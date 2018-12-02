@@ -3,6 +3,7 @@ import "./Results.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../../utils/AppContext";
 
+// Component for each list item returned in results
 export class ListItem extends React.Component {
   static contextType = AppContext;
   render() {

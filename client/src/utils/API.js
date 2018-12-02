@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// API routes to search for people or movies
 export default {
   getPeople: function(query) {
     return axios.get("/api/people", { params: { search: query } });

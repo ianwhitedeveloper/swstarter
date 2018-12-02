@@ -4,6 +4,7 @@ import Search from "../../components/Search/Search.js";
 import { Results, ListItem } from "../../components/Results";
 import { AppContext } from "../../utils/AppContext";
 
+// Main page containing search box and results
 class Main extends React.Component {
   static contextType = AppContext;
 
