@@ -10,7 +10,6 @@ router.get("/people", (req, res) => {
   
 });
 
-
 // SWAPI route for movie search
 router.get("/movies", (req, res) => {
   axios
@@ -24,6 +23,14 @@ router.get("/movies", (req, res) => {
 router.get("/planets", (req, res) => {
   axios
   .get("https://swapi.co/api/planets/?search=", { params: req.query })
+    .then(({ data: { results } }) => res.json(results))
+    .catch(err => res.status(422).json(err));
+  
+});
+
+router.get("/species", (req, res) => {
+  axios
+  .get("https://swapi.co/api/species/?search=", { params: req.query })
     .then(({ data: { results } }) => res.json(results))
     .catch(err => res.status(422).json(err));
   

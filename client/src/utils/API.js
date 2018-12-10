@@ -10,5 +10,8 @@ export default {
   },
   getPlanets: function(query) {
     return axios.get("/api/planets", { params: { search: query } });
+  },
+  getSpecies: function(query) {
+    return axios.get("/api/species", { params: { search: query } });
   }
 };

@@ -35,8 +35,13 @@ class App extends React.Component {
           this.setState({ results: res.data })
         );
         break;
+      case "species":
+        API.getSpecies(this.state.resultSearch).then(res =>
+          this.setState({ results: res.data })
+        );
+        break;
       default:
-        alert("Please select People or Movies!");
+        alert("Please select a search option!");
     }
   };
 

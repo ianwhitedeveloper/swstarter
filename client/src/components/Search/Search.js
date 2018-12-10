@@ -44,6 +44,16 @@ class Search extends React.Component {
                 />
                 <label htmlFor="planets">Planets</label>
               </li>
+              <li>
+                <input
+                  type="radio"
+                  id="species"
+                  name="searchQuery"
+                  value="species"
+                  onChange={context.handleSelect}
+                />
+                <label htmlFor="species">Species</label>
+              </li>
             </div>
 
             <li>
