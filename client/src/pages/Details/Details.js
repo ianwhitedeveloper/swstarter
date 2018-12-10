@@ -2,14 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Details.css";
 import { AppContext } from "../../utils/AppContext";
+import API from "../../utils/API";
 
 class Details extends React.Component {
   static contextType = AppContext;
 
-  // render correct details for either people or movies
+  anotherAPI = query => {
+    if (query.includes("people")) {
+      // API.getPerson(query);
+      return query;
+    }
+  };
+
+  createListEl = item => {
+    return (
+      <li key={item}>
+        <a href={item} target="_blank" rel="noopener noreferrer">
+          {this.anotherAPI(item)}
+        </a>
+      </li>
+    );
+  };
+
+  // render correct details for people, movies, planets, species
   renderInfo = () => {
     const context = this.context;
     const result = context.results[context.resultIndex];
+
     if (context.searchQuery === "people") {
       return (
         <div className="people-info">
@@ -31,17 +50,7 @@ class Details extends React.Component {
             <div className="column-2">
               <h4>Movies</h4>
               <hr />
-              <ul>
-                {result.films.map(film => {
-                  return (
-                    <li key={film}>
-                      <a href={film} target="_blank">
-                        {film}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+              <ul>{result.films.map(this.createListEl)}</ul>
             </div>
           </div>
         </div>
@@ -60,17 +69,7 @@ class Details extends React.Component {
             <div className="column-2">
               <h4>Characters</h4>
               <hr />
-              <ul>
-                {result.characters.map(char => {
-                  return (
-                    <li key={char}>
-                      <a href={char} target="_blank">
-                        {char}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+              <ul>{result.characters.map(this.createListEl)}</ul>
             </div>
           </div>
         </div>
@@ -99,17 +98,7 @@ class Details extends React.Component {
               <ul>
                 <li>Population:{result.population}</li>
                 <li>Residents: </li>
-                <ul>
-                  {result.residents.map(resident => {
-                    return (
-                      <li key={resident}>
-                        <a href={resident} target="_blank">
-                          {resident}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ul>{result.residents.map(this.createListEl)}</ul>
               </ul>
             </div>
           </div>
@@ -137,29 +126,9 @@ class Details extends React.Component {
               <hr />
               <ul>
                 <li>People: </li>
-                <ul>
-                  {result.people.map(person => {
-                    return (
-                      <li key={person}>
-                        <a href={person} target="_blank">
-                          {person}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ul>{result.people.map(this.createListEl)}</ul>
                 <li>Films: </li>
-                <ul>
-                  {result.films.map(film => {
-                    return (
-                      <li key={film}>
-                        <a href={film} target="_blank">
-                          {film}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <ul>{result.films.map(this.createListEl)}</ul>
               </ul>
             </div>
           </div>

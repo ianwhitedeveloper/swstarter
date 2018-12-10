@@ -5,6 +5,9 @@ export default {
   getPeople: function(query) {
     return axios.get("/api/people", { params: { search: query } });
   },
+  getPerson: function(queryUrl) {
+    return axios.get("/api/person", queryUrl);
+  },
   getMovies: function(query) {
     return axios.get("/api/movies", { params: { search: query } });
   },

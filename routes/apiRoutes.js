@@ -10,6 +10,15 @@ router.get("/people", (req, res) => {
   
 });
 
+router.get("/person", (req, res) => {
+  console.log("hit /person api", req, res)
+  // axios
+  // .get(req.queryUrl)
+  //   .then(({ data: { results } }) => res.json(results))
+  //   .catch(err => res.status(422).json(err));
+  
+});
+
 // SWAPI route for movie search
 router.get("/movies", (req, res) => {
   axios
