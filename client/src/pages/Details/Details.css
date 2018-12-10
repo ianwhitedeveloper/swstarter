@@ -1,26 +1,35 @@
 .details-wrapper {
   width: 804px;
-  min-height: 417px;
+  max-height: 500px;
+
   border-radius: 4px;
   box-shadow: 0 1px 2px 0 rgba(132, 132, 132, 0.75);
-  background-color: #ffffff;
+  background-color: #252525;
   padding: 30px;
   position: relative;
+  color: #fff;
 }
 
-h3 #title {
-  width: 112px;
-  height: 22px;
+h2 #title {
+  /* width: 112px;
+  height: 22px; */
   font-family: Montserrat;
-  font-size: 18px;
   font-weight: bold;
   color: #000000;
+}
+
+.people-info,
+.movie-info,
+.planet-info {
+  max-height: 450px;
 }
 
 .info {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  overflow: scroll;
+  max-height: 450x;
 }
 
 .info hr {
@@ -29,6 +38,14 @@ h3 #title {
 
 .info ul {
   list-style: none;
+}
+
+.info a {
+  color: #fff;
+}
+
+.info li {
+  line-height: 25px;
 }
 
 .opening-crawl {
@@ -44,7 +61,7 @@ h3 #title {
   width: 187px;
   height: 34px;
   border-radius: 17px;
-  background-color: #0ab463;
+  background-color: #823b3b;
   font-family: Montserrat;
   font-size: 14px;
   font-weight: bold;

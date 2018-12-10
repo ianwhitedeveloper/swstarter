@@ -10,7 +10,7 @@ class Search extends React.Component {
     const context = this.context;
     return (
       <div className="search-form">
-        <h6>What are you looking for?</h6>
+        <h2>What are you searching for?</h2>
         <form onSubmit={context.handleSubmit}>
           <ul className="flex">
             <div className="radio-btns">
@@ -33,6 +33,16 @@ class Search extends React.Component {
                   onChange={context.handleSelect}
                 />
                 <label htmlFor="movies">Movies</label>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="planets"
+                  name="searchQuery"
+                  value="planets"
+                  onChange={context.handleSelect}
+                />
+                <label htmlFor="planets">Planets</label>
               </li>
             </div>
 

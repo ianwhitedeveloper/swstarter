@@ -30,6 +30,11 @@ class App extends React.Component {
           this.setState({ results: res.data })
         );
         break;
+      case "planets":
+        API.getPlanets(this.state.resultSearch).then(res =>
+          this.setState({ results: res.data })
+        );
+        break;
       default:
         alert("Please select People or Movies!");
     }
@@ -63,7 +68,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="header">
-          <h2>SWStarter</h2>
+          <h2>Star Wars Search</h2>
         </header>
         <div className="container">
           <AppContext.Provider value={this.state}>

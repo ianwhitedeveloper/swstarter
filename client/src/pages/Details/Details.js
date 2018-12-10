@@ -13,7 +13,7 @@ class Details extends React.Component {
     if (context.searchQuery === "people") {
       return (
         <div className="people-info">
-          <h3 id="title">{result.name}</h3>
+          <h2 id="title">{result.name}</h2>
           <div className="info">
             <div className="details">
               <h4>Details</h4>
@@ -22,7 +22,7 @@ class Details extends React.Component {
                 <li>Birth Year: {result.birth_year}</li>
                 <li>Gender: {result.gender}</li>
                 <li>Eye Color: {result.eye_color}</li>
-                <li>Hair Color:{result.hair_color}</li>
+                <li>Hair Color: {result.hair_color}</li>
                 <li>Height: {result.height}</li>
                 <li>Mass: {result.mass}</li>
               </ul>
@@ -46,10 +46,10 @@ class Details extends React.Component {
           </div>
         </div>
       );
-    } else {
+    } else if (context.searchQuery === "movies") {
       return (
         <div className="movie-info">
-          <h3 id="title">{result.title}</h3>
+          <h2 id="title">{result.title}</h2>
           <div className="info">
             <div className="opening-crawl">
               <h4>Opening Crawl</h4>
@@ -70,6 +70,46 @@ class Details extends React.Component {
                     </li>
                   );
                 })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (context.searchQuery === "planets") {
+      return (
+        <div className="planet-info">
+          <h2 id="title">{result.name}</h2>
+          <div className="info">
+            <div className="details">
+              <h4>Details</h4>
+              <hr />
+              <ul>
+                <li>Climate: {result.climate}</li>
+                <li>Terrain: {result.terrain}</li>
+                <li>Diameter: {result.diameter} km</li>
+                <li>Orbital Period: {result.orbital_period} days</li>
+                <li>Rotation Period: {result.rotation_period} hours</li>
+                <li>Surface Water: {result.surface_water} %</li>
+              </ul>
+            </div>
+
+            <div className="population">
+              <h4>Population</h4>
+              <hr />
+              <ul>
+                <li>Population:{result.population}</li>
+                <li>Residents: </li>
+                <ul>
+                  {result.residents.map(resident => {
+                    return (
+                      <li key={resident}>
+                        <a href={resident} target="_blank">
+                          {resident}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
               </ul>
             </div>
           </div>

@@ -4,7 +4,11 @@ body {
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ededed;
+  background-image: url("https://images.alphacoders.com/107/thumb-1920-107763.jpg");
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 code {
