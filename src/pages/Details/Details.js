@@ -19,14 +19,15 @@ class Details extends React.Component {
 
   getName = query => {
     this.setState(state => ({loading: true}));
-    const resultIndex = this.context.resultIndex;
+    const results = this.context.searchResults[this.context.resultIndex];
+
     switch (this.context.searchQuery) {
       // case "people":
       //   return API.getPeople(this.state.resultSearchQuery)
       //   .then(response => this.setState({additionalInfo: response.data}));
       case "people":
         return axios.all(
-          this.context.searchResults[resultIndex].films.map(film => axios.get(film))
+          results.films.map(film => axios.get(film))
         )
         .then(responses => {
           const movieTitles = responses.map(movie => movie.data.title);
