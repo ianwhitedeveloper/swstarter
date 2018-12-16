@@ -7,18 +7,23 @@ import API from "../../utils/API";
 class Details extends React.Component {
   static contextType = AppContext;
 
-  anotherAPI = query => {
-    if (query.includes("people")) {
-      // API.getPerson(query);
-      return query;
-    }
+  getName = query => {
+    // if (query.includes("people")) {
+    //   API.getPerson(query).then(res => console.log(res));
+    //   // return query;
+    // }
+    // if (query.includes("films")) {
+    //   API.getMovie(query).then(res => console.log(res));
+    // return query;
+    //}
+    API.getMovie(query).then(res => console.log(res));
   };
 
   createListEl = item => {
     return (
       <li key={item}>
         <a href={item} target="_blank" rel="noopener noreferrer">
-          {this.anotherAPI(item)}
+          {this.getName("1")}
         </a>
       </li>
     );
