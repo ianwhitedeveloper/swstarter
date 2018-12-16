@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import Main from "../pages/Main/Main.js";
 import Details from "../pages/Details/Details.js";
 import "./App.css";
-import API from "../utils/API";
 import { AppContext } from "../utils/AppContext";
+import axios from 'axios';
 
 class App extends React.Component {
   handleSelect = event => {
@@ -19,15 +19,17 @@ class App extends React.Component {
   };
 
   selectQuery = () => {
+    const params = { search: this.state.resultSearchQuery };
+
     switch (this.state.searchQuery) {
       case "people":
-        return API.getPeople(this.state.resultSearchQuery);
+        return axios.get("https://swapi.co/api/people", {params})
       case "movies":
-        return API.getMovies(this.state.resultSearchQuery);
+        return axios.get("https://swapi.co/api/films/?search=", {params});
       case "planets":
-        return API.getPlanets(this.state.resultSearchQuery);
+        return axios.get("https://swapi.co/api/planets/?search=", {params});
       case "species":
-        return API.getSpecies(this.state.resultSearchQuery);
+        return axios.get("https://swapi.co/api/species/?search=", {params});
       default:
         alert("Please select a search option!");
     }
@@ -43,7 +45,7 @@ class App extends React.Component {
     event.preventDefault();
     this.setState(state => ({loading: true}));
     const response = await this.selectQuery();
-    this.setState({searchResults: response.data, loading: false});
+    this.setState({searchResults: response.data.results, loading: false});
   };
 
   state = {
