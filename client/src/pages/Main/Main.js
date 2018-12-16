@@ -18,7 +18,10 @@ class Main extends React.Component {
           handleSelect={context.handleSelect}
         />
         <Results>
-          {context.results.map((result, index) => {
+          {context.loading && 
+            <div>{'...loading'}</div>
+          }
+          {!context.loading && context.searchResults.map((result, index) => {
             const name = result.name || result.title;
             return <ListItem key={name} resultIndex={index} name={name} />;
           })}

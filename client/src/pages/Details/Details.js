@@ -2,12 +2,45 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Details.css";
 import { AppContext } from "../../utils/AppContext";
-import API from "../../utils/API";
+// import API from "../../utils/API";
+import axios from 'axios'
 
 class Details extends React.Component {
   static contextType = AppContext;
 
+  state = {
+    additionalInfo: [],
+    loading: false
+  }
+
+  componentDidMount() {
+    this.getName();
+  }
+
   getName = query => {
+    this.setState(state => ({loading: true}));
+
+    switch (this.context.searchQuery) {
+      // case "people":
+      //   return API.getPeople(this.state.resultSearchQuery)
+      //   .then(response => this.setState({additionalInfo: response.data}));
+      case "people":
+        return axios.all(
+          this.context.searchResults[this.context.resultIndex].films.map(film => axios.get(film))
+        )
+        .then(responses => {
+          const movieTitles = responses.map(movie => movie.data.title);
+          this.setState({ additionalInfo: movieTitles, loading: false })
+        });
+      // case "planets":
+      //   return API.getPlanets(this.state.resultSearchQuery)
+      //   .then(response => this.setState({additionalInfo: response.data}));
+      // case "species":
+      //   return API.getSpecies(this.state.resultSearchQuery)
+      //   .then(response => this.setState({additionalInfo: response.data}));
+      default:
+        return true;
+    }
     // if (query.includes("people")) {
     //   API.getPerson(query).then(res => console.log(res));
     //   // return query;
@@ -16,15 +49,13 @@ class Details extends React.Component {
     //   API.getMovie(query).then(res => console.log(res));
     // return query;
     //}
-    API.getMovie(query).then(res => console.log(res));
+    // API.getMovie(query).then(res => console.log(res));
   };
 
   createListEl = item => {
     return (
       <li key={item}>
-        <a href={item} target="_blank" rel="noopener noreferrer">
-          {this.getName("1")}
-        </a>
+        {item}
       </li>
     );
   };
@@ -32,7 +63,7 @@ class Details extends React.Component {
   // render correct details for people, movies, planets, species
   renderInfo = () => {
     const context = this.context;
-    const result = context.results[context.resultIndex];
+    const result = context.searchResults[context.resultIndex];
 
     if (context.searchQuery === "people") {
       return (
@@ -52,10 +83,16 @@ class Details extends React.Component {
               </ul>
             </div>
 
+            {/* make this its own component so it can be shared to reduce duplication */}
             <div className="column-2">
               <h4>Movies</h4>
               <hr />
-              <ul>{result.films.map(this.createListEl)}</ul>
+              {this.state.loading && 
+                <div>{'...loading'}</div>
+              }
+              {!this.state.loading &&
+                <ul>{this.state.additionalInfo.map(this.createListEl)}</ul>
+              }
             </div>
           </div>
         </div>

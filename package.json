@@ -9,6 +9,9 @@
   "format": "prettier --write \"src/**/*.{js,jsx}\"",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "node --inspect server.js"
+    "start:dev": "nodemon --inspect server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }

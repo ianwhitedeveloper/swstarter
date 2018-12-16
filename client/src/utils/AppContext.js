@@ -2,7 +2,7 @@ import React from "react";
 
 export const AppContext = React.createContext({
   results: [],
-  resultSearch: "",
+  resultSearchQuery: "",
   resultIndex: null,
   searchQuery: "people",
   handleSelect: () => {},

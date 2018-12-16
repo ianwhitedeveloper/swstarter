@@ -4,14 +4,14 @@ const router = require("express").Router();
 // SEARCH PEOPLE
 router.get("/people", (req, res) => {
   axios
-  .get("https://swapi.co/api/people/?search=", { params: req.query })
+  .get("https://swapi.co/api/people", { params: req.query })
     .then(({ data: { results } }) => res.json(results))
     .catch(err => res.status(422).json(err));
   
 });
 
 // SEARCH PERSON ID
-router.get("/person/:id", (req, res) => {
+router.get("/person", (req, res) => {
   // console.log("hit /person api", req, res)
   axios
   .get("http https://swapi.co/api/people/", { params: req.params.id })
@@ -30,10 +30,10 @@ router.get("/movies", (req, res) => {
 });
 
 // SEARCH MOVIE ID
-router.get("/movie/:id", (req, res) => {
+router.get("/movie", (req, res) => {
   axios
   .get(`https://swapi.co/api/films/${req.params.id}`)
-  .then(console.log(res))
+  .then((results) => console.log(results))
   
 });
 

@@ -16,6 +16,7 @@ class Search extends React.Component {
             <div className="radio-btns">
               <li>
                 <input
+                  checked={context.searchQuery === 'people'}
                   type="radio"
                   id="people"
                   name="searchQuery"
@@ -26,6 +27,7 @@ class Search extends React.Component {
               </li>
               <li>
                 <input
+                  checked={context.searchQuery === 'movies'}
                   type="radio"
                   id="movies"
                   name="searchQuery"
@@ -36,6 +38,7 @@ class Search extends React.Component {
               </li>
               <li>
                 <input
+                  checked={context.searchQuery === 'planets'}
                   type="radio"
                   id="planets"
                   name="searchQuery"
@@ -46,6 +49,7 @@ class Search extends React.Component {
               </li>
               <li>
                 <input
+                  checked={context.searchQuery === 'species'}
                   type="radio"
                   id="species"
                   name="searchQuery"
@@ -61,7 +65,7 @@ class Search extends React.Component {
                 type="text"
                 name="input"
                 id="input"
-                value={context.resultSearch}
+                value={context.resultSearchQuery}
                 onChange={context.handleInputChange}
                 placeholder="e.g. Chewbacca, Yoda, Boba Fett"
               />

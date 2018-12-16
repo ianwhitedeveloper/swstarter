@@ -21,25 +21,13 @@ class App extends React.Component {
   selectQuery = () => {
     switch (this.state.searchQuery) {
       case "people":
-        API.getPeople(this.state.resultSearch).then(res =>
-          this.setState({ results: res.data })
-        );
-        break;
+        return API.getPeople(this.state.resultSearchQuery);
       case "movies":
-        API.getMovies(this.state.resultSearch).then(res =>
-          this.setState({ results: res.data })
-        );
-        break;
+        return API.getMovies(this.state.resultSearchQuery);
       case "planets":
-        API.getPlanets(this.state.resultSearch).then(res =>
-          this.setState({ results: res.data })
-        );
-        break;
+        return API.getPlanets(this.state.resultSearchQuery);
       case "species":
-        API.getSpecies(this.state.resultSearch).then(res =>
-          this.setState({ results: res.data })
-        );
-        break;
+        return API.getSpecies(this.state.resultSearchQuery);
       default:
         alert("Please select a search option!");
     }
@@ -47,21 +35,23 @@ class App extends React.Component {
 
   handleInputChange = event => {
     this.setState({
-      resultSearch: event.target.value
+      resultSearchQuery: event.target.value
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    this.selectQuery();
+    this.setState(state => ({loading: true}));
+    const response = await this.selectQuery();
+    this.setState({searchResults: response.data, loading: false});
   };
 
   state = {
-    results: [],
-    resultSearch: "",
+    loading: false,
+    searchResults: [],
+    resultSearchQuery: "",
     resultIndex: null,
     searchQuery: "people",
-    detailsSelection: "",
     handleSelect: this.handleSelect,
     selectQuery: this.selectQuery,
     handleInputChange: this.handleInputChange,
